@@ -21,7 +21,5 @@ int main() {
     encolar(cola,60);
     encolar(cola,70);
 
-
-
     return 0;
 }

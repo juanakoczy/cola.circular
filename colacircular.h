@@ -8,7 +8,7 @@
 
 typedef struct cola{
     //int data[5];//capacidad maxima de la cola -> no es la capacidad, está declarando un array donde implementa la cola
-    int* data; //array dinamico
+    int* data; //array dinámico
     int tamanio; //AGREGO ESTE ATRIBUTO PARA SABER EL TAMAÑO DE LA COLA
     int front;//primer dato
     int rear;//ultimo dato
@@ -17,7 +17,7 @@ typedef struct cola{
 
 
 // declarar función para inicializar la cola considerando las correcciones
-
+//dearrollar una funcion buscar y otra swap
 
 void iniciarCola (Cola *cola);
 int colaVacia (Cola * cola); //verifica si la cola esta vacia
