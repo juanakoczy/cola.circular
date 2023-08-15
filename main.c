@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "cmake-build-debug/colacircular.h"
+#include "colacircular.h"
 
 
 int main() {

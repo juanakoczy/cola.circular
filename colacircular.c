@@ -12,6 +12,7 @@ int colaVacia (Cola * cola){
     return (cola->count==0);
 }
 
+//modificar esta funcion. Está comparando una variable con un puntero
 int colallena (Cola * cola){
     return (cola->count == cola->data);
 }
@@ -20,6 +21,8 @@ void encolar (Cola * cola, int valor) {
     if (!colallena(cola)) {
         cola->rear = (cola->rear + 1) % 5;//5 es el valor maximo que le puse a esta cola, el modulo hace
                                             //que rear vuelva al final de la cola
+
+                                            //ojo aca, el tamaño de la cola lo agregue como variable de la estructura
         cola->data[cola->rear] = valor;
         cola->count++;
     }
