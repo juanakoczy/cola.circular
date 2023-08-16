@@ -1,27 +1,30 @@
 #include <stdio.h>
-#include "cmake-build-debug/colacircular.h"
+#include "colacircular.h"
 
 
 int main() {
-    Cola *cola;
-    iniciarCola(cola);
+    Cola *cola = NULL;
+
+
+    iniciarCola(cola,2);
 
     encolar(cola,10);
     encolar(cola,20);
-    encolar(cola,30);
-    encolar(cola,40);
-    encolar(cola,50);
+
 
     printf ("Primer elemento: %d", front(cola));
 
-    printf ("Desencolar %d", Desencolar(cola,10));
+    printf ("Desencolar %d", desencolar(cola,10));
 
     printf ("Primer elemento: %d", front(cola));
 
-    encolar(cola,60);
     encolar(cola,70);
 
+    printf ("Ultimo elemento: %d", rear(cola));
 
+    buscar(cola,10);
+
+    swap(cola,10,20);
 
     return 0;
 }

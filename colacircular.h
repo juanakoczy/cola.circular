@@ -6,22 +6,30 @@
 #define COLA_CIRCULAR_COLACIRCULAR_H
 
 
+#include <stdbool.h>
+
 typedef struct cola{
-    int data[5];//capacidad maxima de la cola
+    int data;// Cambie el array por un dato de tipo entero que es el valor entero que guarda cola
     int front;//primer dato
     int rear;//ultimo dato
     int count;//contador de la cola
+    int tamanio;
 }Cola;
 
-void iniciarCola (Cola *cola);
-int colaVacia (Cola * cola); //verifica si la cola esta vacia
-int colallena (Cola * cola); //verifica si la cola esta llena
+
+void iniciarCola (Cola *cola, int tamanio);
+bool colaVacia (Cola * cola); //verifica si la cola esta vacia
+bool colallena (Cola * cola); //verifica si la cola esta llena
 
 void encolar (Cola * cola, int valor); //insertar un valor en la cola
-int Desencolar (Cola * cola, int valor);//elimina un elemento de la cola
+int desencolar (Cola * cola, int valor);//elimina un elemento de la cola
 
 int front (Cola * cola); //Obtener el primer elemento sin eliminarlo
 int rear (Cola * cola);//Obtener el ultimo elemento sin eliminarlo
+
+
+void buscar (Cola * cola, int valor);
+void swap (Cola*cola,int valor1,int valor2);
 
 #endif //COLA_CIRCULAR_COLACIRCULAR_H
 
