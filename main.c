@@ -3,7 +3,7 @@
 
 
 int main() {
-    Cola *cola = NULL;
+    Cola * cola=0;
 
 
     iniciarCola(cola,2);
@@ -25,6 +25,7 @@ int main() {
     buscar(cola,10);
 
     swap(cola,10,20);
+    swapPosicion(cola,1,2);
 
     return 0;
 }

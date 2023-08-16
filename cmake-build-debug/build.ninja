@@ -57,6 +57,14 @@ build CMakeFiles/Cola_Circular.dir/main.c.obj: C_COMPILER__Cola_Circular_Debug C
   TARGET_COMPILE_PDB = CMakeFiles\Cola_Circular.dir\
   TARGET_PDB = Cola_Circular.pdb
 
+build CMakeFiles/Cola_Circular.dir/colacircular.c.obj: C_COMPILER__Cola_Circular_Debug C$:/Users/Usuario/Desktop/RECUPERATORIO/Cola$ Circular/colacircular.c || cmake_object_order_depends_target_Cola_Circular
+  DEP_FILE = CMakeFiles\Cola_Circular.dir\colacircular.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu11
+  OBJECT_DIR = CMakeFiles\Cola_Circular.dir
+  OBJECT_FILE_DIR = CMakeFiles\Cola_Circular.dir
+  TARGET_COMPILE_PDB = CMakeFiles\Cola_Circular.dir\
+  TARGET_PDB = Cola_Circular.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Cola_Circular
@@ -65,7 +73,7 @@ build CMakeFiles/Cola_Circular.dir/main.c.obj: C_COMPILER__Cola_Circular_Debug C
 #############################################
 # Link the executable Cola_Circular.exe
 
-build Cola_Circular.exe: C_EXECUTABLE_LINKER__Cola_Circular_Debug CMakeFiles/Cola_Circular.dir/main.c.obj
+build Cola_Circular.exe: C_EXECUTABLE_LINKER__Cola_Circular_Debug CMakeFiles/Cola_Circular.dir/main.c.obj CMakeFiles/Cola_Circular.dir/colacircular.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Cola_Circular.dir

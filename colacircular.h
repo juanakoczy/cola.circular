@@ -9,7 +9,7 @@
 #include <stdbool.h>
 
 typedef struct cola{
-    int data;// Cambie el array por un dato de tipo entero que es el valor entero que guarda cola
+    int *data;//
     int front;//primer dato
     int rear;//ultimo dato
     int count;//contador de la cola
@@ -30,6 +30,7 @@ int rear (Cola * cola);//Obtener el ultimo elemento sin eliminarlo
 
 void buscar (Cola * cola, int valor);
 void swap (Cola*cola,int valor1,int valor2);
+void swapPosicion (Cola * cola,int posicion1,int posicion2);
 
 #endif //COLA_CIRCULAR_COLACIRCULAR_H
 

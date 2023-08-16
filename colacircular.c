@@ -2,8 +2,11 @@
 #include <stdio.h>
 #include "colacircular.h"
 #include <stdbool.h>
+#include <malloc.h>
+
 
 void iniciarCola (Cola *cola,int tamanio){
+    cola->data = malloc(sizeof tamanio);
     cola->front = 0;
     cola-> rear = -1;
     cola->count =0;
@@ -20,26 +23,26 @@ bool colallena (Cola * cola){
 
 void encolar (Cola * cola, int valor) {
     if (!colallena(cola)) {
-        cola->rear = (cola->rear + 1) % cola->tamanio;// valor maximo que le puse a esta cola, el modulo hace
-                                            //que rear vuelva al final de la cola
-        cola -> data = valor;
+        cola->rear = (cola->rear + 1) % cola->tamanio;// el modulo mantien el valor dentro de la cola
+
+        cola->data[cola->rear] = valor;
         cola->count++;
     }
     else
-        printf("La cola esta llena. No se puede encolar");
+        printf("\nLa cola esta llena. No se puede encolar\n");
 }
 
 
 int desencolar (Cola * cola, int valor) {
     if (!colaVacia(cola)) {
-        valor = cola->data;
+        valor = cola->data[cola->front];
         cola->front = (cola->front + 1) % cola->tamanio;//5 es el valor maximo que le puse a esta cola, el modulo hace
                                               //que front vuelva al principio de la cola
         cola->count--;
         return valor;
     }
     else
-        printf("La cola esta vacia. No se puede desencolar");
+        printf("\nLa cola esta vacia. No se puede desencolar\n");
     return -1;
 }
 
@@ -47,10 +50,10 @@ int desencolar (Cola * cola, int valor) {
 int front (Cola * cola){
     if (!colaVacia(cola))
     {
-        return cola->front;
+        return cola->data[cola->front];
     }
     else{
-        printf("La cola esta vacia.");
+        printf("\nLa cola esta vacia.\n");
         return -1;
     }
 }
@@ -58,10 +61,10 @@ int front (Cola * cola){
 int rear (Cola * cola){
     if (!colaVacia(cola))
     {
-        return cola->rear;
+        return cola->data[cola->rear];
     }
     else{
-        printf("La cola esta vacia.");
+        printf("\nLa cola esta vacia.\n");
         return -1;
     }
 }
@@ -72,18 +75,18 @@ void buscar (Cola * cola, int valor){
 
         while(cola->front !=cola->rear) {// mientras que el frente sea distinto a al final
 
-            if (valor == cola->data) {
-                printf("El valor %d se encuentra en la posicion %d", valor, cola->front);
+            if (valor == cola->data[cola->front]) {
+                printf("\nEl valor %d se encuentra en la posicion %d\n", valor, cola->front);
             }
             else 
             cola->front = (cola->front + 1) % cola->tamanio;
         }
            cola->front = aux;         //vuelvo a poner el frente original y salgo del ciclo
-            printf ("El valor no se encuentra en la cola.");
+            printf ("\nEl valor no se encuentra en la cola.\n");
             }
 
     else
-        printf("La cola esta vacia. No se puede buscar");
+        printf("\nLa cola esta vacia. No se puede buscar\n");
 
 }
 
@@ -93,19 +96,31 @@ void swap (Cola*cola,int valor1,int valor2) {
         int aux = cola->front;
         while (cola->front !=cola->rear) {
             cola->front = (cola->front + 1) % cola->tamanio;
-            if (cola->data == valor1) {
-                cola->data = valor2;
+            if (cola->data[cola->front] == valor1) {
+                cola->data[cola->front] = valor2;
             } else {
                 cola->front = (cola->front + 1) % cola->tamanio;
-                if (cola->data == valor2)
-                    cola->data = valor1;
+                if (cola->data[cola->front] == valor2)
+                    cola->data[cola->front] = valor1;
             }
         }
         cola->front = aux;
 
     } else
-        printf("La cola esta vacia. No se puede intercambiar");
+        printf("\nLa cola esta vacia. No se puede intercambiar\n");
 }
 
-// Created by Usuario on 14/8/2023.
-//
+
+void swapPosicion (Cola * cola,int posicion1,int posicion2) {
+    if (!colaVacia(cola)) {
+
+        int aux1 = (cola->front + posicion1) % cola->tamanio;
+        int aux2 = (aux1 + posicion2) % cola->tamanio;
+
+        int temp = cola->data[aux1];
+
+        cola->data[aux1] = cola->data[aux2];
+        cola->data[aux2] = temp;
+    } else
+        printf("\nCola vacia, no se puede intercambiar.\n");
+}
