@@ -6,7 +6,7 @@
 
 
 void iniciarCola (Cola *cola,int tamanio){
-    cola->data = malloc(sizeof tamanio);
+    Cola * data = (Cola *) malloc(sizeof tamanio);
     cola->front = 0;
     cola-> rear = -1;
     cola->count =0;

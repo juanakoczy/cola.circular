@@ -3,7 +3,7 @@
 
 
 int main() {
-    Cola * cola=0;
+    Cola * cola;
 
 
     iniciarCola(cola,2);
