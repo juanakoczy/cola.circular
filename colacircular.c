@@ -4,14 +4,24 @@
 #include <stdbool.h>
 #include <malloc.h>
 
+Cola * newCola(int tamanio){
+    Cola * aux = NULL;
 
-void iniciarCola (Cola *cola,int tamanio){
-    Cola * data = (Cola *) malloc(sizeof tamanio);
-    cola->front = 0;
-    cola-> rear = -1;
-    cola->count =0;
-    cola-> tamanio = tamanio;
+    aux = malloc(sizeof(Cola));
+
+    if (aux == NULL) {
+        printf("No se pudo reservar memoria para la cola.\n");
+        exit(-1);
+    }
+
+    aux->data= malloc(sizeof(int) * tamanio);
+    aux-> tamanio=  tamanio;
+    aux->front = 0;
+    aux->rear = 0;
+
+    return aux;
 }
+
 
 bool colaVacia (Cola * cola){
     return (cola->count==0);
@@ -75,7 +85,7 @@ void buscar (Cola * cola, int valor){
 
         while(cola->front !=cola->rear) {// mientras que el frente sea distinto a al final
 
-            if (valor == cola->data[cola->front]) {
+            if (cola->data[cola->front]==valor) {
                 printf("\nEl valor %d se encuentra en la posicion %d\n", valor, cola->front);
             }
             else 

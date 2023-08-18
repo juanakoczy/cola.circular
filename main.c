@@ -3,24 +3,22 @@
 
 
 int main() {
-    Cola * cola;
+    Cola * cola = newCola(2);
 
-
-    iniciarCola(cola,2);
 
     encolar(cola,10);
     encolar(cola,20);
 
 
-    printf ("Primer elemento: %d", front(cola));
+    printf ("\nPrimer elemento: %d\n", front(cola));
 
-    printf ("Desencolar %d", desencolar(cola,10));
+    desencolar(cola,20);
 
-    printf ("Primer elemento: %d", front(cola));
+    printf ("\nPrimer elemento: %d\n", front(cola));
 
     encolar(cola,70);
 
-    printf ("Ultimo elemento: %d", rear(cola));
+    printf ("\nUltimo elemento: %d\n", rear(cola));
 
     buscar(cola,10);
 
