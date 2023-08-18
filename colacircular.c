@@ -16,7 +16,7 @@ Cola * newCola(int tamanio){
     aux-> tamanio=  tamanio;
     aux->front = 0;
     aux->rear = 0;
-
+    aux->count = 0;
     return aux;
 }
 
@@ -81,13 +81,13 @@ void buscar (Cola * cola, int valor){
     if (!colaVacia(cola)) {
         int aux = cola->front;//guardo el frente en un aux
 
-        while(cola->front !=cola->rear) {// mientras que el frente sea distinto a al final
+        while(aux !=cola->rear) {// mientras que el frente sea distinto a al final
 
-            if (cola->data[cola->front]==valor) {
+            if (aux==valor) {
                 printf("\nEl valor %d se encuentra en la posicion %d\n", valor, cola->front);
             }
             else 
-            cola->front = (cola->front + 1) % cola->tamanio;
+            aux = (aux + 1) % cola->tamanio;
         }
            cola->front = aux;         //vuelvo a poner el frente original y salgo del ciclo
             printf ("\nEl valor no se encuentra en la cola.\n");
@@ -119,16 +119,17 @@ void swap (Cola*cola,int valor1,int valor2) {
 }
 
 
-void swapPosicion (Cola * cola,int posicion1,int posicion2) {
+void swapPosicion (Cola * cola,int posicion,int posicionHaciaAdelante) {
     if (!colaVacia(cola)) {
 
-        int aux1 = (cola->front + posicion1) % cola->tamanio;
-        int aux2 = (aux1 + posicion2) % cola->tamanio;
+        int posicionReal = (cola->front + posicion) % cola->tamanio;
+        int posicionNueva = posicionReal;
+        int aux = posicionReal;
 
-        int temp = cola->data[aux1];
+        while(aux!=posicionHaciaAdelante) {
 
-        cola->data[aux1] = cola->data[aux2];
-        cola->data[aux2] = temp;
+
+        }
     } else
         printf("\nCola vacia, no se puede intercambiar.\n");
 }
