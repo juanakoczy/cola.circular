@@ -13,8 +13,6 @@ Cola * newCola(int tamanio){
         printf("No se pudo reservar memoria para la cola.\n");
         exit(-1);
     }
-
-    aux->data= malloc(sizeof(int) * tamanio);
     aux-> tamanio=  tamanio;
     aux->front = 0;
     aux->rear = 0;
