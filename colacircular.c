@@ -7,19 +7,24 @@
 Cola * newCola(int tamanio){
     Cola * aux = NULL;
 
-    aux = malloc(sizeof(Cola));
-
+    aux = malloc(sizeof(Cola)); //memoria para la estructura general
     if (aux == NULL) {
-        printf("No se pudo reservar memoria para la cola.\n");
+        printf("No se pudo reservar memoria para la estructura.\n");
         exit(-1);
     }
+
     aux-> tamanio=  tamanio;
     aux->front = 0;
     aux->rear = 0;
     aux->count = 0;
+    aux->data = malloc(sizeof(int)*tamanio); //memoria para el arreglo de datos
+    if (aux->data == NULL) {
+        printf("No se pudo reservar memoria para la cola.\n");
+        exit(-2);
+    }
+
     return aux;
 }
-
 
 bool colaVacia (Cola * cola){
     return (cola->count==0);
@@ -31,8 +36,8 @@ bool colallena (Cola * cola){
 
 void encolar (Cola * cola, int valor) {
     if (!colallena(cola)) {
-        cola->rear = (cola->rear + 1) % cola->tamanio;// el modulo mantien el valor dentro de la cola
-
+        if (cola->count != 0) //la cola tiene elementos
+            cola->rear = (cola->rear + 1) % cola->tamanio;// avanzao una posición. el modulo mantiene el valor dentro de la cola
         cola->data[cola->rear] = valor;
         cola->count++;
     }
@@ -40,10 +45,10 @@ void encolar (Cola * cola, int valor) {
         printf("\nLa cola esta llena. No se puede encolar\n");
 }
 
-
-int desencolar (Cola * cola, int valor) {
+int desencolar (Cola * cola) {
     if (!colaVacia(cola)) {
-        valor = cola->data[cola->front];
+        //int valor = cola->data[cola->front];
+        int valor = front(cola); //así usamos la funcion front, pero no es necesario
         cola->front = (cola->front + 1) % cola->tamanio;//5 es el valor maximo que le puse a esta cola, el modulo hace
                                               //que front vuelva al principio de la cola
         cola->count--;
@@ -53,7 +58,6 @@ int desencolar (Cola * cola, int valor) {
         printf("\nLa cola esta vacia. No se puede desencolar\n");
     return -1;
 }
-
 
 int front (Cola * cola){
     if (!colaVacia(cola))
@@ -83,21 +87,24 @@ void buscar (Cola * cola, int valor){
 
         while(aux !=cola->rear) {// mientras que el frente sea distinto a al final
 
-            if (aux==valor) {
-                printf("\nEl valor %d se encuentra en la posicion %d\n", valor, cola->front);
+            // if (aux==valor) { mal! esta comparando un indice con un valor
+            if (cola->data[aux] == valor){  //correcto! compara el valor del indice con el valor buscado
+                printf("\nEl valor %d se encuentra en la posicion %d\n", valor, aux);
+                return; //ya encontré el valor, no es necesario seguir buscando
             }
-            else 
             aux = (aux + 1) % cola->tamanio;
         }
-           cola->front = aux;         //vuelvo a poner el frente original y salgo del ciclo
-            printf ("\nEl valor no se encuentra en la cola.\n");
+        //falta el caso en que el valor buscado sea el ultimo elemento
+        if (cola->data[aux]) {
+            printf("\nEl valor %d se encuentra en la posicion %d\n", valor, aux);
+            } else {
+                printf ("\nEl valor no se encuentra en la cola.\n");
             }
-
+        //cola->front = aux;  vuelvo a poner el frente original y salgo del ciclo -> no! siempre trabaja con el auxiliar y no toca el frente original
+        }
     else
         printf("\nLa cola esta vacia. No se puede buscar\n");
-
 }
-
 
 void swap (Cola*cola,int valor1,int valor2) {
     if (!colaVacia(cola)) {

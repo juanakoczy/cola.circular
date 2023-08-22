@@ -22,8 +22,8 @@ bool colaVacia (Cola * newCola); //verifica si la cola esta vacia
 bool colallena (Cola * newCola); //verifica si la cola esta llena
 
 void encolar (Cola * newCola, int valor); //insertar un valor en la cola
-int desencolar (Cola * newCola, int valor);//elimina un elemento de la cola
-
+//int desencolar (Cola * newCola, int valor); para que sirve el valor?
+int desencolar (Cola * newCola);//elimina un elemento de la cola
 int front (Cola * newCola); //Obtener el primer elemento sin eliminarlo
 int rear (Cola * newCola);//Obtener el ultimo elemento sin eliminarlo
 

@@ -5,7 +5,6 @@
 int main() {
     Cola * cola = newCola(3);
 
-
     encolar(cola,10);
     encolar(cola,20);
     encolar(cola,70);
