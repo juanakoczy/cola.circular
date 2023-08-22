@@ -108,8 +108,9 @@ void buscar (Cola * cola, int valor){
 
 void swap (Cola*cola,int valor1,int valor2) {
     if (!colaVacia(cola)) {
-        int aux = cola->front;
-        while (cola->front !=cola->rear) {
+        int fin = (cola->rear+1)%cola->tamanio; //el fin es el siguiente al rear
+        int aux = cola->front; //guardo el frente en un aux
+        /*while (cola->front !=cola->rear) {
             cola->front = (cola->front + 1) % cola->tamanio;
             if (cola->data[cola->front] == valor1) {
                 cola->data[cola->front] = valor2;
@@ -120,23 +121,44 @@ void swap (Cola*cola,int valor1,int valor2) {
             }
         }
         cola->front = aux;
-
+    */
+        while (true) { //me aseguro que entre al bucle. Si porngo aux == a fin y la cola esta llena no entraría
+            if (cola->data[aux] == valor1) {
+                cola->data[aux] = valor2;
+                printf("\nSe cambio el valor %d por el valor %d, en la posición %d.\n", valor1, valor2, aux);
+                return;
+            }
+            aux = (aux + 1) % cola->tamanio;
+            if (aux == fin) //para que recorra toda la cola
+                break;
+            }
     } else
         printf("\nLa cola esta vacia. No se puede intercambiar\n");
 }
-
 
 void swapPosicion (Cola * cola,int posicion,int posicionHaciaAdelante) {
     if (!colaVacia(cola)) {
 
         int posicionReal = (cola->front + posicion) % cola->tamanio;
-        int posicionNueva = posicionReal;
-        int aux = posicionReal;
-
-        while(aux!=posicionHaciaAdelante) {
-
-
-        }
+        int posicionNueva = (posicionReal + posicionHaciaAdelante) % cola->tamanio;
+        int aux = cola->data[posicionNueva];
+        cola->data[posicionNueva] = cola->data[posicionReal];
+        cola->data[posicionReal] = aux;
     } else
         printf("\nCola vacia, no se puede intercambiar.\n");
+}
+
+void imprimir (Cola* cola) {
+    if (!colaVacia(cola)) {
+        printf("\n");
+        int fin = (cola->rear+1)%cola->tamanio; //el fin es el siguiente al rear
+        int aux = cola->front;
+        while (true) {
+            printf("%d ", cola->data[aux]);
+            aux = (aux + 1) % cola->tamanio;
+            if (aux == fin)
+                break;
+        }
+    } else
+        printf("\nLa cola esta vacia. No se puede imprimir\n");
 }

@@ -32,5 +32,7 @@ void buscar (Cola * newCola, int valor);
 void swap (Cola*newCola,int valor1,int valor2);
 void swapPosicion (Cola * newCola,int posicion1,int posicion2);
 
+void imprimir (Cola * cola);
+
 #endif //COLA_CIRCULAR_COLACIRCULAR_H
 
